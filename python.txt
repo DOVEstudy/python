@@ -1,0 +1,47 @@
+table=''.maketrans('abcdef123','uvwxyz@@@')
+s='python is a great program123'
+s.translate(table)
+#结果'python is u gryut progrum@@@'
+
+
+
+
+
+#凯撒加密算法
+import string 
+def kaisa(s,k):
+    lower=string.ascii_lowercase
+    upper=string.ascii_uppercase
+    before=string.ascii_letters
+    after=lower[k:]+lower[:k]+upper[k:]+upper[:k]
+    table=''.maketrans(before,after)
+    return s.translate(table)
+s='python is a great program language'
+kaisa(s,3)
+#结果'sbwkrq lv d juhdw surjudp odqjxdjh'
+
+
+
+
+
+
+#字符串加密解密
+def crypt(source,key):
+    from itertools import cycle
+    result=''
+    temp=cycle(key)
+    for ch in source:
+        result=result + chr(ord(ch)^ord(next(temp)))
+    return result
+source='Shandong Institute of Business and Technology'
+key='Dong Fuguo'
+print('Before Encrypted:'+ source)
+encrypted=crypt(source,key)
+print('After Encrypted:'+ encrypted)
+decrypted=crypt(encrypted,key)
+print('After Decrypted:'+ decrypted)
+
+
+
+
+
